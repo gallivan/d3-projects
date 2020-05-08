@@ -1,0 +1,3 @@
+https://www.tutorialsteacher.com/d3js
+
+python -m http.server --directory /home/gallivan/d3-projects/basic 8888

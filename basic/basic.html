@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>D3 Basic</title>
+</head>
+<body>
+    <svg width="300" height="50">
+        <rect x="0" y="0" width="200" height="20" fill="goldenrod"></rect>
+    </svg>
+
+    <p>First paragraph</p>
+    <p>Second paragraph</p>
+
+    <script>
+        d3.select("p").style("color", "blue");
+    </script>
+
+    <p id="p1">First paragraph with id</p>
+    <p id="p2">Second paragraph with id</p>
+
+    <script>
+        d3.select("#p2").style("color", "red");
+    </script>
+
+    <style>
+        .myclass{
+            color:'red'
+        }
+    </style>
+
+    <p class="myclass ">First paragraph with class</p>
+    <p class="myclass ">Second paragraph with class</p>
+
+    <script>
+        d3.selectAll(".myclass ").style('color','brown');
+    </script>
+
+    <table>
+        <tr>
+            <td>
+                One
+            </td>
+            <td>
+                Two
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Three
+            </td>
+            <td>
+                Four
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        <!-- selects the first tr element then all nested td elements -->
+        d3.select("tr").selectAll("td").style('background-color','lightblue');
+    </script>
+
+    <script>
+        d3.select("p").text("First paragraph - text modified.");
+    </script>
+
+    <script type="text/javascript">
+        d3.select("body").append("p").text("Hello World!");
+    </script>
+
+
+    <style>
+        .class01{color:'red'}
+    </style>
+
+    <p class="class01"></p>
+    <p class="class01"></p>
+    <p class="class01"></p>
+
+    <script>
+        var data = [100, 200, 300];
+        var paragraph = d3.select("body")
+        .selectAll(".class01")
+        .data(data) // NB: setting data
+        .text(function (d, i) {
+            console.log("d: " + d);
+            console.log("i: " + i);
+            console.log("this: " + this);
+            return d;
+        });
+    </script>
+
+    <style>
+        .class02{color:'black'}
+    </style>
+
+    <p class="class02">Error: This is error.</p>
+    <p class="class02">Warning:This is warning.</p>
+
+    <script>
+        d3.selectAll(".class02").style("color", function(d, i) {
+            var text = this.innerText;
+            if (text.indexOf("Error") >= 0) {
+                return "red";
+            } else if (text.indexOf("Warning") >= 0) {
+                return "purple";
+            }
+        });
+    </script>
+
+</body>

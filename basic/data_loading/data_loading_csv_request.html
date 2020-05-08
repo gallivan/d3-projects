@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <script>
+    d3.request("http://localhost:8888/data/employees.csv")
+    .mimeType("text/csv")
+    .response(function (xhr) { return d3.csvParse(xhr.responseText); })
+    .get(function(data) {
+        console.log(data);
+    });
+    </script>
+</body>
+</html>
